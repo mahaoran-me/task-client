@@ -7,22 +7,25 @@
     <span>mahaoran@gmail.com</span>
     <br>
     <el-button size="small" plain round>编辑个人信息<i class="el-icon-edit"></i></el-button>
-    <hr>
+    <el-divider></el-divider>
     <div class="item">
-      个人偏好设置
+      <el-button type="success" icon="el-icon-check" circle></el-button>
+      <el-button type="warning" icon="el-icon-share" circle></el-button>
+      <el-button type="info" icon="el-icon-setting" circle></el-button>
     </div>
-    <hr>
-    <div class="item">
-      帮助与反馈
-    </div>
-    <hr>
+    <el-divider></el-divider>
     <el-button size="small" plain>退出登录</el-button>
   </div>
 </template>
 
 <script>
 export default {
-  name: "Profile"
+  name: "Profile",
+  data() {
+    return {
+      model: false
+    }
+  }
 }
 </script>
 
@@ -35,18 +38,8 @@ export default {
     margin: 8px;
   }
 
-  hr {
-    border: 0.5px #E4E7ED solid;
+  .el-divider {
     margin: 0;
-  }
-
-  .item {
-    transition: background-color .2s;
-  }
-
-  .item:hover {
-    background-color: #e9eef3;
-    cursor: pointer;
   }
 }
 </style>

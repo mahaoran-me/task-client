@@ -48,15 +48,14 @@ export default {
   height: 100%;
   background-color: white;
   color: #333;
+  border-right: 1px #e3e3e3 solid;
   //text-align: center;
-  line-height: 200px;
 }
 
 .el-main {
-  background-color: #E9EEF3;
-  color: #333;
+  background-color: white;
+  padding: 10px;
   text-align: center;
-  line-height: 160px;
 }
 
 .el-container:nth-child(5) .el-aside,
