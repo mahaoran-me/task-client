@@ -5,9 +5,11 @@
       <el-link :underline="false" href="#"><h1>Task</h1></el-link>
     </div>
     <div class="block-2">
-      <el-input v-model="search" autosize placeholder="搜索任务">
-        <i slot="prefix" class="el-input__icon el-icon-search"></i>
-      </el-input>
+      <div class="search">
+        <el-input v-model="search" autosize placeholder="搜索任务">
+          <i slot="prefix" class="el-input__icon el-icon-search"></i>
+        </el-input>
+      </div>
     </div>
     <div class="block-3">
       <el-popover
@@ -61,9 +63,13 @@ export default {
   }
 
   .block-2 {
-    width: 400px;
-    min-width: 200px;
-    margin: 0 10px 0 10px;
+    flex: auto;
+    margin: 0 10px 0 50px;
+
+    .search {
+      width: 60%;
+      min-width: 200px;
+    }
   }
 
   .block-3 {

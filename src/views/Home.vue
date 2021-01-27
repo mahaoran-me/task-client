@@ -8,7 +8,7 @@
         <Aside :is-collapsed="isCollapsed"></Aside>
       </el-aside>
       <el-main>
-        <MyMain></MyMain>
+        <MainToday></MainToday>
       </el-main>
     </el-container>
   </el-container>
@@ -17,11 +17,11 @@
 <script>
 import Aside from "@/components/Aside";
 import Header from "@/components/Header";
-import MyMain from "@/components/Main";
+import MainToday from "@/components/MainToday";
 
 export default {
   name: "Home",
-  components: {MyMain, Header, Aside},
+  components: {MainToday, Header, Aside},
   data() {
     return {
       isCollapsed: false
@@ -54,7 +54,7 @@ export default {
 
 .el-main {
   background-color: white;
-  padding: 10px;
+  padding: 0;
   text-align: center;
 }
 

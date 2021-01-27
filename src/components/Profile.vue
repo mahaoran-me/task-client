@@ -14,7 +14,7 @@
       <el-button type="info" icon="el-icon-setting" circle></el-button>
     </div>
     <el-divider></el-divider>
-    <el-button size="small" plain>退出登录</el-button>
+    <el-button size="small" plain @click="logout">退出登录</el-button>
   </div>
 </template>
 
@@ -24,6 +24,20 @@ export default {
   data() {
     return {
       model: false
+    }
+  },
+  methods: {
+    logout() {
+      this.axios.get("/api/logout")
+          .then((response) => {
+            if (response.data.code === 0) {
+              this.$message.error(response.data.message);
+              return false;
+            } else {
+              this.$message.success(response.data.message);
+              this.$router.push('/login');
+            }
+          });
     }
   }
 }

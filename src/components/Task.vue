@@ -1,8 +1,8 @@
 <template>
   <div class="task">
     <div class="left">
-      <i class="el-icon-circle-check" style="color: red"></i>
-      <b>这是一个标题</b>
+      <i :class="iconClass" @click="onClickIcon"></i>
+      <b :class="{finished: task.finished}">{{ task.title }}</b>
     </div>
     <div class="right">
       <i>2020.01.23</i>
@@ -15,15 +15,29 @@ export default {
   name: "Task",
   data() {
     return {
-      task: {
-        id: Number,
-        title: '',
-        content: '',
-        level: Number,
-        startTime: Date,
-        endTime: Date,
-        doneTime: Date,
-        deleted: Boolean
+    }
+  },
+  props: {
+    task: Object
+  },
+  methods: {
+    onClickIcon() {
+      if (this.task.finished === false && this.task.timeout === false) {
+        this.task.finished = true;
+      } else if (this.task.finished === true && this.task.timeout === false) {
+        this.task.finished = false;
+      }
+    }
+  },
+  computed: {
+    iconClass: function () {
+      return {
+        normal: this.task.level === 1,
+        important: this.task.level === 2,
+        emergency: this.task.level === 3,
+        'el-icon-circle-check': this.task.finished === false && this.task.timeout === false,
+        'el-icon-success': this.task.finished === true && this.task.timeout === false,
+        'el-icon-warning': this.task.timeout === true,
       }
     }
   }
@@ -50,6 +64,22 @@ export default {
   i {
     margin-left: 10px;
     margin-right: 10px;
+  }
+
+  .normal {
+    color: #67C23A;
+  }
+
+  .important {
+    color: #E6A23C;
+  }
+
+  .emergency {
+    color: #F56C6C;
+  }
+
+  .finished {
+    text-decoration:line-through;
   }
 
   .left {

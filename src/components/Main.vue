@@ -19,16 +19,17 @@
       </el-collapse>
     </div>
     <div class="right">
-
+      <Display></Display>
     </div>
   </div>
 </template>
 
 <script>
 import Task from "@/components/Task";
+import Display from "@/components/Display";
 export default {
   name: "MyMain",
-  components: {Task},
+  components: {Display, Task},
   data() {
     return {
       activeNames: ['1', '2'],
@@ -61,7 +62,6 @@ export default {
   }
 
   .right {
-    background-color: #409eff;
     padding-left: 5px;
     flex: 2;
   }

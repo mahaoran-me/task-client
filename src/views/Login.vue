@@ -44,13 +44,14 @@ export default {
           const params = new URLSearchParams();
           params.append('username', this.form.username);
           params.append('password', this.form.password);
-          this.axios.post('http://localhost/api/login', params)
+          this.axios.post('/api/login', params)
               .then((response) => {
                 if (response.data.code === 0) {
                   this.$message.error(response.data.message);
+                  return false;
                 } else {
                   this.$message.success(response.data.message);
-                  this.$router.push('/home');
+                  this.$router.push('/home/today');
                 }
               });
         }
