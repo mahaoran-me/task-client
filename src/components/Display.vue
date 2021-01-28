@@ -6,7 +6,7 @@
       <el-tag>{{ task.finished ? '已完成' : '未完成' }}</el-tag>
       <el-tag>{{ task.timeout ? '已过期' : '未过期' }}</el-tag>
       <el-tag>{{ task.deleted ? '已删除' : '未删除' }}</el-tag>
-      <el-button :type="finishedColor" circle size="small"><i class="el-icon-check"></i></el-button>
+      <el-button :type="finishedColor" circle size="small" @click="task.finished = !task.finished"><i class="el-icon-check"></i></el-button>
       <el-dropdown trigger="click" @command="changeLevel">
         <el-button :type="color" circle size="small"><i class="el-icon-collection-tag"></i></el-button>
         <el-dropdown-menu slot="dropdown">
@@ -30,19 +30,10 @@ export default {
   name: "Display",
   data() {
     return {
-      task: {
-        id: 1003,
-        title: '这是一个标题',
-        content: '这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容这是内容',
-        level: 2,
-        finished: true,
-        timeout: false,
-        deleted: false,
-        startTime: new Date(),
-        endTime: new Date(),
-        doneTime: new Date()
-      }
     }
+  },
+  props: {
+    task: Object
   },
   computed: {
     color: function () {

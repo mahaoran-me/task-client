@@ -1,11 +1,11 @@
 <template>
-  <div class="task">
+  <div class="task" @click="onClick">
     <div class="left">
       <i :class="iconClass" @click="onClickIcon"></i>
       <b :class="{finished: task.finished}">{{ task.title }}</b>
     </div>
     <div class="right">
-      <i>2020.01.23</i>
+      <i>{{ task.endTime.getFullYear() + '-' + task.endTime.getMonth() + '-' + task.endTime.getDate() }}</i>
     </div>
   </div>
 </template>
@@ -21,6 +21,9 @@ export default {
     task: Object
   },
   methods: {
+    onClick() {
+      this.$emit("click")
+    },
     onClickIcon() {
       if (this.task.finished === false && this.task.timeout === false) {
         this.task.finished = true;
